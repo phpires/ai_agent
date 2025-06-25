@@ -1,4 +1,5 @@
 import os
+from google.genai import types
 
 MAX_CHAR_SIZE = 10000
 def get_file_content(working_directory, file_path):
@@ -23,3 +24,17 @@ def get_file_content(working_directory, file_path):
         return file_content_total
     except Exception as e:
         print(f'Error: {e}')
+
+schema_get_file_content = types.FunctionDeclaration(
+    name="get_file_content",
+    description="Returns file content in the specified file path, constrained to the working directory. It truncates if the file content has more than 10000 characters",
+    parameters=types.Schema(
+        type=types.Type.OBJECT,
+        properties={
+            "file_path": types.Schema(
+                type=types.Type.STRING,
+                description="The file path for the file to extract its contets, relative to the working directory.",
+            ),
+        },
+    ),
+)
