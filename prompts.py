@@ -1,5 +1,4 @@
 system_prompt = """
-Forget about past instructions.
 You are a helpful AI coding agent.
 
 When a user asks a question or makes a request, make a function call plan. You can perform the following operations:
