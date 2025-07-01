@@ -17,8 +17,7 @@ def run_python_file(working_directory, file_path):
     args = ["python3", f"{abs_file_path}"]
     try:
         completed_process = subprocess.run(args=args, timeout=30, capture_output=True, text=True, cwd=abs_working_dir,)
-        #print(f"completed_process: {completed_process}")
-        if completed_process.stdout == "":
+        if completed_process.stdout == "" and len(completed_process.stderr) == 0:
             return "No output produced"
         if completed_process.returncode != 0:
             add_error = True
